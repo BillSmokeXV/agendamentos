@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horários Disponíveis</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="slots" class="slots">
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            generateTimeSlots();
+        });
+
+        function generateTimeSlots() {
+            const startHour = 8;
+            const endHour = 18;
+            const interval = 50; // minutos
+            const slotsContainer = document.getElementById('slots');
+            
+            let currentTime = new Date();
+            currentTime.setHours(startHour, 0, 0, 0);
+
+            while (currentTime.getHours() < endHour || (currentTime.getHours() === endHour && currentTime.getMinutes() === 0)) {
+                const hours = currentTime.getHours();
+                const minutes = currentTime.getMinutes();
+                const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+                
+                const slotDiv = document.createElement('div');
+                slotDiv.className = 'slot';
+                slotDiv.textContent = formattedTime;
+
+                // Adicione aqui event listener para agendar horário, se necessário
+
+                slotsContainer.appendChild(slotDiv);
+                currentTime.setMinutes(currentTime.getMinutes() + interval);
+            }
+        }
+    </script>
+    <script src="./script_horarios.js"></script>
+</body>
+</html>
