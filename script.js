@@ -1,11 +1,8 @@
-document.addEventListener('DOMContentLoaded', function() {
-    generateCalendar(new Date().getFullYear(), new Date().getMonth()); // Gera o calendário para o mês atual
-});
-
 document.getElementById('toggleButton').addEventListener('click', function() {
     var calendar = document.getElementById('calendar');
     if (calendar.style.display === 'none' || calendar.style.display === '') {
         calendar.style.display = 'flex';
+        generateCalendar(new Date().getFullYear(), new Date().getMonth()); // Gera o calendário para o mês atual
     } else {
         calendar.style.display = 'none';
     }
