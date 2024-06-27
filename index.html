@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendário</title>
+    <title>Página Inicial</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="profile">
         <img src="./assets/avatar.light.jpg" alt="Imagem de um olho, com o cílios feito alongamento">
-        <p>@teste_teste</p>
+        <br>
+        <p>@santiagobeautycenter</p>
         <br>
         <br>
         
-        <button id="toggleButton" class="light-mode">Agende AQUI</button>
+        <button id="toggleButton" class="light-mode"
+        onclick="openInNewTab()">Agende AQUI</button>
         
         <div id="social-links">
             <ul class="mode-list">
@@ -39,17 +41,16 @@
                 </li>
             </ul>
         </div>
-
-        <div class="calendar" id="calendar"></div>
-        
-        <div id="slots" class="slots"></div>
         
         <footer>
             Feito com ♥ pelo
             <a href="https://www.instagram.com/smokedriverofc/">Roberto Freires Silva</a> 
         </footer>
     </div>
-
-    <script src="script.js"></script>
+    <script>
+        function openInNewTab() {
+            window.open('calendario.html', '_blank');
+        }
+    </script>
 </body>
 </html>
