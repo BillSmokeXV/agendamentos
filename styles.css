@@ -6,6 +6,15 @@
     box-sizing: border-box;
 }
 
+:root {
+    --text-color: white;
+    --bg-url: url(./assets/bg-light.jpg);
+    --stroke-color: rgba(255, 255, 255, 0.5);
+    --surface-color: rgba(255, 255, 255, 0.05);
+    --surface-color-hover: rgba(0, 0, 0, 0.02);
+    --highlight-color: rgba(255, 255, 255, 0.2);
+}
+
 body {
     background-image: url(./assets/avatar-dark.jpg);
     background-size: cover; /* Para cobrir todo o fundo */
@@ -21,76 +30,124 @@ body {
     padding: 0;
 }
 
-body.active-background {
-    background-image: url(./assets/);
-}
+body * {
+    font-family: "Inter", sans-serif;
+    color: var(--text-color);
+  }
+
+#container {
+    width: 100%;
+    max-width: 588px;
+    margin: 56px auto 0px;
+    padding: 0 24px;
+  }  
 
 #profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
     text-align: center;
-    min-height: 100vh; /* Garante que o perfil ocupa pelo menos a altura da viewport */
     padding: 24px;
 }
 
 #profile img {
-    width: 180px;
+    width: 110px;
     border-radius: 50%; /* Deixa a imagem redonda, ajuste conforme necessário */
 }
 
 #profile p {
     font-weight: 500;
+    line-height: 24px;
     margin-top: 8px;
 }
 
-button {
-    width: 200px;
-    background-color: greenyellow;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
+#switch {
+    position: relative;
+    width: 64px;
+  
+    margin: 4px auto;
 }
 
-button:hover {
-    background-color: #f0f0f0;
-    color: #333;
-}
+#switch button {
+    width: 50px;
+    height: 50px;
+    background: white var(--switch-bg-url) no-repeat center;
+    border: 2px;
+    border-radius: 50%;
+  
+    position: relative;
+    top: 50%;
+    left: 0;
+    z-index: 1;
+    transform: translateY(-50%);
+  
+    animation: slide-back 0.2s;
+  }
+
+#switch button {
+    animation: slide-in 0.2s forwards;
+  }
+
+#switch button:hover {
+    outline: 8px solid var(--highlight-color);
+  }
+
+#switch span {
+    display: block;
+    width: 64px;
+    height: 24px;
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 9999px;
+  }
 
 ul {
-    width: 200px;
-    list-style-type: none;
-    background-color: greenyellow;
+    list-style: none;
+  
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  
+    padding: 24px 0;
+  }
+
+ul li a {
     display: flex;
     align-items: center;
-    text-align: center;
-    border-radius: 5px;
-}
+    justify-content: center;
+  
+    padding: 16px 24px;
+  
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    border-radius: 8px;
+  
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  
+    text-decoration: none;
+    font-weight: 500;
+  
+    transition: background 0.2s;
+  }  
 
-.mode-list {
-    list-style-type: none;
-    padding: 0; /* Remove o preenchimento padrão */
-    margin: 0; /* Remove a margem padrão */
-    display: none;
-}
-
-.mode-list li {
-    margin: 4px 0; /* Margem vertical de 4px e sem margem horizontal */
-}
+ul li a:hover {
+    background: var(--surface-color-hover);
+    border: 1.5px solid var(--text-color);
+  }
 
 .calendar {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
 }
 
 .month {
-    margin: 20px 0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 90%;
+    max-width: 500px;
+    margin: auto;
 }
 
 .days-of-week {
@@ -105,12 +162,13 @@ ul {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 10px;
+    text-align: center;
 }
 
 .day {
     width: 40px;
     height: 40px;
-    display: flex;
+    display:flexbox;
     justify-content: center;
     align-items: center;
     border: 1px solid #ccc;
@@ -127,6 +185,16 @@ ul {
     font-size: 14px;
     text-align: center;
     line-height: 40px;
+}
+
+.month h2 {
+    font-size: 1em; /* diminui o tamanho da fonte */
+    margin: 0;
+}
+
+.day {
+    font-size: 0.8em; /* diminui o tamanho da fonte */
+    padding: 2px;
 }
 
 .day-button:hover {
@@ -172,45 +240,14 @@ ul {
     margin-bottom: 10px;
 }
 
-/* Estilos para links sociais e listas */
-
-#social-links {
-    display: block;
-    justify-content: center;
-    padding: 24px 0;
-    font-size: 15px;
-}
-
-#social-links a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-}
-
-.mode-list {
-    list-style-type: none;
-    padding: 0;
-    display: none;
-}
-
-.mode-list li {
-    margin: 16px 0;
-}
-
-.mode-list {
-    display: block;
-}
-
 /* Estilos para o footer */
 
 footer {
-    border: 1px solid greenyellow;
-    border-radius: 4px;
-    padding: 10px;
+    padding: 24px 0;
     text-align: center;
     font-size: 14px;
-    margin-top: 20px;
+    border: 1px solid greenyellow;
+    border-radius: 4px;
 }
 
 @media (max-width: 768px) {
